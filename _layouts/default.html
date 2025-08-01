@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title | default: site.title }}</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  <link rel="shortcut icon" href="{{ '/assets/icons/favicon.ico' | relative_url }}" type="image/x-icon" />
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/icons/favicon-16x16.png' | relative_url }}" />
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/icons/favicon-32x32.png' | relative_url }}" />
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/icons/apple-touch-icon.png' | relative_url }}" />
+  <link rel="icon" type="image/png" sizes="192x192" href="{{ '/assets/icons/android-chrome-192x192.png' | relative_url }}" />
+  <link rel="icon" type="image/png" sizes="512x512" href="{{ '/assets/icons/android-chrome-512x512.png' | relative_url }}" />
+
+</head>
+<body>
+  <canvas id="matrix"></canvas>
+
+  <main class="content">
+    {{ content }}
+  </main>
+
+  <script src="{{ '/assets/js/matrix.js' | relative_url }}"></script>
+</body>
+</html>
