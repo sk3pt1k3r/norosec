@@ -25,4 +25,4 @@ Noroshiki | ノロシキ — Unveiling forbidden knowledge in the hidden layers 
 </div>
 
 <div class="site-footer">
-<a>&copy; 2025 Norosec</a>
+<a>&copy; 2025 Norosec - All rights reserved</a>
