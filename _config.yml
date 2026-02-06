@@ -1,3 +1,5 @@
 title: NOROSEC — Forbidden Security & Knowledge
 description: "Forbidden knowledge lab and archive"
 url: "https://norosec.xyz"
+  include:
+  - ssrf-poc.txt
